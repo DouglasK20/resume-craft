@@ -1,13 +1,15 @@
 import { Controller, useFormContext } from "react-hook-form";
 import { ComponentProps } from "react";
 import { Input } from ".";
+import { FieldWrapper } from "../field-wrapper";
 
 type InputFieldProps = ComponentProps<typeof Input> & {
     label: string;
     name: string;
+    containerClassName?: string;
 }
 
-export function InputField({ label, name, required, ...props }: InputFieldProps) {
+export function InputField({ label, name, required, containerClassName, ...props }: InputFieldProps) {
     const { control } = useFormContext();
     return (
         <Controller
@@ -17,14 +19,14 @@ export function InputField({ label, name, required, ...props }: InputFieldProps)
                 required: required && "Campo obrigatório"
             }}
             render={({ field, fieldState }) => (
-                <div>
+                <FieldWrapper label={label} className={containerClassName}>
                     <Input {...props} {...field} />
                     {fieldState.error && (
                         <p className="text-sm text-red-500">
                             {fieldState.error.message}
                         </p>
                     )}
-                </div>
+                </FieldWrapper>
             )}
         />
     );
