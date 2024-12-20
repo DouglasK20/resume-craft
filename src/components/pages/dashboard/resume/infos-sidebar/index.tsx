@@ -1,9 +1,10 @@
 import { AIGenerationDropdown } from "./ai-generation-dropdown";
 import { BasicInfoSection } from "./sections/basic-info";
+import { MultiplesSections } from "./sections/multiples";
 import { Separator } from "@/components/ui/separator";
+import { SummarySection } from "./sections/summary";
 import Logo from "@/assets/logo.svg";
 import Link from "next/link";
-import { SummarySection } from "./sections/summary";
 
 export function InfosSidebar() {
     return (
@@ -22,6 +23,8 @@ export function InfosSidebar() {
             <Separator className="my-5" />
 
             <SummarySection />
+
+            <MultiplesSections />
         </aside>
     );
 }
